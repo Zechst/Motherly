@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "748933198875",
+    "firebase_url": "https://motherly-c5077.firebaseio.com",
+    "project_id": "motherly-c5077",
+    "storage_bucket": "motherly-c5077.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748933198875:android:23e4098d0b6445e88ef4be",
+        "android_client_info": {
+          "package_name": "com.babyspa.motherly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748933198875-7o3e3cjfnvs79nfs12898phnadh4rhko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAodS0vCWG26mkc_EvB0YeIRdq9F6xBV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748933198875-7o3e3cjfnvs79nfs12898phnadh4rhko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
