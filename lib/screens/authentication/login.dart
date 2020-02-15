@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
+import 'package:motherly/screens/authentication/emailsignin.dart';
+import 'package:motherly/main.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -8,27 +10,28 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final String logoWhite = 'assets/logowhite.txt';
+  final String logoWhite = 'assets/logowhite.svg';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
+        body: SafeArea(
+          child: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [Color(0xFFFA9A9A), Color(0xFFFD4F5F)])),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
+              //padding: const EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
+              padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
               child: Center(
                   child: Column(
                 children: <Widget>[
                   SvgPicture.asset(
                     logoWhite,
                     fit: BoxFit.contain,
-                    color: Colors.white,
-                    height: 200.0,
+                    height: 170.0,
                   ),
                   Text('Motherly',
                       style: TextStyle(
@@ -37,13 +40,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.white)),
                   SizedBox(height: 20.0),
                   Text("Baby's Edge to be Healthier,",
-                  textAlign: TextAlign.center,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           fontFamily: 'FredokaOne',
                           fontSize: 15.0,
                           color: Colors.white)),
                   Text("Smarter and Sociable",
-                  textAlign: TextAlign.center,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           fontFamily: 'FredokaOne',
                           fontSize: 15.0,
@@ -52,7 +55,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(
                     height: 20.0,
                   ),
-                  // SvgPicture.asset(assetName, color: Colors.white, height: 220.0,),
                   GoogleSignInButton(
                     onPressed: () {},
                     text: 'Login with Google',
@@ -72,10 +74,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: <Widget>[
                           Align(
                               alignment: Alignment.centerLeft,
-                              child: Icon(Icons.phone, color: Colors.white)),
+                              child: Icon(Icons.email, color: Colors.white)),
                           Align(
                             alignment: Alignment.center,
-                            child: Text('Login with Phone number',
+                            child: Text('Login with Email Address',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.white,
@@ -85,17 +87,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           )
                         ],
                       ),
-                      // label: Text('Login with Phone', style: TextStyle(color: Colors.white)),
-                      // icon: Icon(Icons.phone, color: Colors.white),
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/emailSignIn');
+                      },
                       color: Colors.transparent,
                       borderSide: BorderSide(color: Colors.white),
                     ),
                   ),
+                  SizedBox(height: 40.0),
+                  Text("Why social login?",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: 'Calibri',
+                          fontSize: 10.0,
+                          color: Colors.white))
                 ],
               )),
-            )));
+    ))));
   }
 }
