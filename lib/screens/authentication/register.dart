@@ -15,6 +15,7 @@ class _RegisterState extends State<Register> {
   // text field state
   String email = '';
   String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +51,15 @@ class _RegisterState extends State<Register> {
                               .left), //TODO Shift this line towards the left on appscreen
                       SizedBox(height: 20.0),
                       TextFormField(
+                          decoration: InputDecoration(
+                            errorStyle: TextStyle(color: Color(0xffd32f2f)),
+                            errorBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Color(0xffd32f2f))),
+                                    focusedErrorBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color(0xffd32f2f)))
+                          ),
                           validator: (val) =>
-                              val.isEmpty ? 'Enter a valid email' : null,
+                              val.isEmpty ? 'Please enter an email' : null,
                           onChanged: (val) {
                             setState(() => email = val);
                           }),
@@ -59,6 +67,13 @@ class _RegisterState extends State<Register> {
                         height: 20.0,
                       ),
                       TextFormField(
+                          decoration: InputDecoration(
+                            errorStyle: TextStyle(color: Color(0xffd32f2f)),
+                            errorBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Color(0xffd32f2f))),
+                                    focusedErrorBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color(0xffd32f2f)))
+                          ),
                           validator: (val) => val.length < 8
                               ? 'Please enter 8 characters or more'
                               : null,
@@ -68,7 +83,7 @@ class _RegisterState extends State<Register> {
                           })
                     ],
                   )),
-              SizedBox(height: 50.0),
+              SizedBox(height: 20.0),
               SizedBox(
                 width: 130.0,
                 height: 40.0,
@@ -92,8 +107,10 @@ class _RegisterState extends State<Register> {
                       borderRadius: new BorderRadius.circular(10.0)),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      print(email);
-                      print(password);
+                      dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                      if(result == null){
+                        setState(() => error = 'Please enter a valid email');
+                      }
                     }
 
                     // dynamic result = await _auth.signInAnon();
@@ -107,6 +124,8 @@ class _RegisterState extends State<Register> {
                   },
                 ),
               ),
+              SizedBox(height: 15.0,),
+              Text(error, style: TextStyle(color: Color(0xffd32f2f), fontSize: 14.0)) //TODO Consider adding the error message under the textformfield 
             ]),
           ),
         ))));

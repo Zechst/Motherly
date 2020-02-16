@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:motherly/screens/authentication/emailsignin.dart';
 import 'package:motherly/screens/authentication/login.dart';
-import 'package:motherly/screens/setProfile.dart';
+import 'package:motherly/screens/wrapper.dart';
 import 'package:motherly/screens/home/home.dart';
 import 'package:motherly/shared/themedata.dart';
 import 'package:provider/provider.dart';
@@ -23,11 +23,13 @@ class MyApp extends StatelessWidget {
 
         //Routes
         routes: {
-         '/': (context) => LoginScreen(),
+         '/': (context) => Wrapper(),
+         '/login': (context) => LoginScreen(),
          '/emailSignIn': (context) => EmailSignIn() ,
          '/register': (context) => Register(),
          '/home': (context) => Home()
-        }
+        },
+        
 
       ),
     );

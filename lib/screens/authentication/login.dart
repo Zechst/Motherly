@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
-import 'package:motherly/screens/authentication/emailsignin.dart';
-import 'package:motherly/main.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
