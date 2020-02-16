@@ -5,7 +5,6 @@ import 'package:motherly/screens/setProfile.dart';
 import 'package:motherly/screens/home/home.dart';
 import 'package:motherly/shared/themedata.dart';
 import 'package:provider/provider.dart';
-import 'package:motherly/screens/home/wrapper.dart';
 import 'package:motherly/services/auth.dart';
 import 'package:motherly/models/user.dart';
 import 'package:motherly/screens/authentication/register.dart';

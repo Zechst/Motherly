@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:motherly/screens/authentication/authenticate.dart';
 import 'package:motherly/services/auth.dart';
 
 class Home extends StatefulWidget {
