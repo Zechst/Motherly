@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:motherly/services/auth.dart';
 import 'package:motherly/shared/constant.dart';
-import 'package:motherly/shared/constant.dart';
+import 'package:motherly/shared/loading.dart';
+
+//TODO Fix signin redirect to homepage. Currently does nothing. 
 
 class EmailSignIn extends StatefulWidget {
   @override
@@ -13,6 +15,7 @@ class _EmailSignInState extends State<EmailSignIn> {
   final String logoPink = 'assets/logopink.svg';
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   // text field state
   String email = '';
@@ -21,7 +24,7 @@ class _EmailSignInState extends State<EmailSignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: <Widget>[
+    return loading ? Loading() : Stack(children: <Widget>[
       Scaffold(
           // TODO make AppBar Floating and scrollable to prevent it from covering up the elements in body
           extendBodyBehindAppBar: true,
@@ -105,12 +108,15 @@ class _EmailSignInState extends State<EmailSignIn> {
                         borderRadius: new BorderRadius.circular(10.0)),
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
+                        setState(() => loading = true);
                         dynamic result = await _auth.signInWithEmailAndPassword(
                             email, password);
-                            print('signin');
                             if (result == null){
-                              setState(() => error = 'Failed to Sign in');
-                            }
+                              setState(() { 
+                              error = 'Invalid email or password';
+                              loading = false;
+                          });
+                        }
                       }
                     },
                   ),

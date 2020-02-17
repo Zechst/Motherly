@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:motherly/services/auth.dart';
 import 'package:motherly/shared/constant.dart';
+import 'package:motherly/shared/loading.dart';
+
+//TODO fix register screen signup. Currently signs in but does not do anything but return error message
 
 class Register extends StatefulWidget {
   @override
@@ -12,6 +15,7 @@ class _RegisterState extends State<Register> {
   final String logoPink = 'assets/logopink.svg';
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   // text field state
   String email = '';
@@ -20,7 +24,7 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading(): Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -52,7 +56,8 @@ class _RegisterState extends State<Register> {
                               .left), //TODO Shift this line towards the left on appscreen
                       SizedBox(height: 20.0),
                       TextFormField(
-                          decoration: textInputDecoration.copyWith(hintText: 'Email'),
+                          decoration:
+                              textInputDecoration.copyWith(hintText: 'Email'),
                           validator: (val) =>
                               val.isEmpty ? 'Please enter an email' : null,
                           onChanged: (val) {
@@ -62,7 +67,8 @@ class _RegisterState extends State<Register> {
                         height: 20.0,
                       ),
                       TextFormField(
-                          decoration: textInputDecoration.copyWith(hintText: 'Password'),
+                          decoration: textInputDecoration.copyWith(
+                              hintText: 'Password'),
                           validator: (val) => val.length < 8
                               ? 'Please enter 8 characters or more'
                               : null,
@@ -96,9 +102,13 @@ class _RegisterState extends State<Register> {
                       borderRadius: new BorderRadius.circular(10.0)),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      dynamic result = await _auth.registerWithEmailAndPassword(email, password);
-                      if(result == null){
-                        setState(() => error = 'Please enter a valid email');
+                      dynamic result = await _auth.registerWithEmailAndPassword(
+                          email, password);
+                      if (result == null) {
+                        setState(() {
+                          error = 'Please enter a valid email';
+                          loading = false;
+                        });
                       }
                     }
 
@@ -113,8 +123,14 @@ class _RegisterState extends State<Register> {
                   },
                 ),
               ),
-              SizedBox(height: 15.0,),
-              Text(error, style: TextStyle(color: Color(0xffd32f2f), fontSize: 14.0)) //TODO Consider adding the error message under the textformfield 
+              SizedBox(
+                height: 15.0,
+              ),
+              Text(error,
+                  style: TextStyle(
+                      color: Color(0xffd32f2f),
+                      fontSize:
+                          14.0)) //TODO Consider adding the error message under the textformfield
             ]),
           ),
         ))));
