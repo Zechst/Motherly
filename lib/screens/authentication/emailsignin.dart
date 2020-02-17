@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:motherly/services/auth.dart';
+import 'package:motherly/shared/constant.dart';
+import 'package:motherly/shared/constant.dart';
 
 class EmailSignIn extends StatefulWidget {
   @override
@@ -59,14 +61,7 @@ class _EmailSignInState extends State<EmailSignIn> {
                       children: <Widget>[
                         SizedBox(height: 20.0),
                         TextFormField(
-                            decoration: InputDecoration(
-                                errorStyle: TextStyle(color: Color(0xffd32f2f)),
-                                errorBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xffd32f2f))),
-                                focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xffd32f2f)))),
+                            decoration: textInputDecoration.copyWith(hintText: 'Email'),
                             validator: (val) =>
                                 val.isEmpty ? 'Enter a valid email' : null,
                             onChanged: (val) {
@@ -76,14 +71,7 @@ class _EmailSignInState extends State<EmailSignIn> {
                           height: 20.0,
                         ),
                         TextFormField(
-                            decoration: InputDecoration(
-                                errorStyle: TextStyle(color: Color(0xffd32f2f)),
-                                errorBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xffd32f2f))),
-                                focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xffd32f2f)))),
+                            decoration: textInputDecoration.copyWith(hintText: 'Password'),
                             validator: (val) => val.length < 8
                                 ? 'Please enter 8 characters or more'
                                 : null,

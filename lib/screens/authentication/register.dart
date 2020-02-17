@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:motherly/services/auth.dart';
+import 'package:motherly/shared/constant.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -51,13 +52,7 @@ class _RegisterState extends State<Register> {
                               .left), //TODO Shift this line towards the left on appscreen
                       SizedBox(height: 20.0),
                       TextFormField(
-                          decoration: InputDecoration(
-                            errorStyle: TextStyle(color: Color(0xffd32f2f)),
-                            errorBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Color(0xffd32f2f))),
-                                    focusedErrorBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color(0xffd32f2f)))
-                          ),
+                          decoration: textInputDecoration.copyWith(hintText: 'Email'),
                           validator: (val) =>
                               val.isEmpty ? 'Please enter an email' : null,
                           onChanged: (val) {
@@ -67,13 +62,7 @@ class _RegisterState extends State<Register> {
                         height: 20.0,
                       ),
                       TextFormField(
-                          decoration: InputDecoration(
-                            errorStyle: TextStyle(color: Color(0xffd32f2f)),
-                            errorBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Color(0xffd32f2f))),
-                                    focusedErrorBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color(0xffd32f2f)))
-                          ),
+                          decoration: textInputDecoration.copyWith(hintText: 'Password'),
                           validator: (val) => val.length < 8
                               ? 'Please enter 8 characters or more'
                               : null,
