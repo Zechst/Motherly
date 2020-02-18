@@ -116,6 +116,8 @@ class _EmailSignInState extends State<EmailSignIn> {
                               error = 'Invalid email or password';
                               loading = false;
                           });
+                        } else if (result != null){
+                          Navigator.pushNamedAndRemoveUntil(context, '/home',(_) => false);
                         }
                       }
                     },

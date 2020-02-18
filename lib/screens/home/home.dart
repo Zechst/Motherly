@@ -38,12 +38,12 @@ void _onItemTapped(int index) {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Motherly'),
+        title: Text('Motherly', style: TextStyle(color: Colors.white),),
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
-            icon: Icon(Icons.person),
-            label: Text('Log Out'),
+            icon: Icon(Icons.person, color: Colors.white),
+            label: Text('Log Out', style: TextStyle(color: Colors.white)),
             onPressed: () async {
               await _auth.signOut();
               Navigator.pushReplacementNamed(context, '/');
