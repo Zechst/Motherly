@@ -64,7 +64,7 @@ class _EmailSignInState extends State<EmailSignIn> {
                       children: <Widget>[
                         SizedBox(height: 20.0),
                         TextFormField(
-                            decoration: textInputDecoration.copyWith(hintText: 'Email'),
+                            decoration: textInputDecoration.copyWith(labelText: 'Email'),
                             validator: (val) =>
                                 val.isEmpty ? 'Enter a valid email' : null,
                             onChanged: (val) {
@@ -74,7 +74,8 @@ class _EmailSignInState extends State<EmailSignIn> {
                           height: 20.0,
                         ),
                         TextFormField(
-                            decoration: textInputDecoration.copyWith(hintText: 'Password'),
+                            
+                            decoration: textInputDecoration.copyWith(labelText: 'Password'),
                             validator: (val) => val.length < 8
                                 ? 'Please enter 8 characters or more'
                                 : null,

@@ -21,6 +21,7 @@ class _RegisterState extends State<Register> {
   String email = '';
   String password = '';
   String error = '';
+  String confirmPassword = '';
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class _RegisterState extends State<Register> {
         : Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
+              title: Text('Register'),
               backgroundColor: Colors.transparent,
               elevation: 0.0,
             ),
@@ -53,14 +55,11 @@ class _RegisterState extends State<Register> {
                       key: _formKey,
                       child: Column(
                         children: <Widget>[
-                          SizedBox(height: 20.0),
-                          Text('Login Details',
-                              textAlign: TextAlign
-                                  .left), //TODO Shift this line towards the left on appscreen
+                           //TODO Shift this line towards the left on appscreen
                           SizedBox(height: 20.0),
                           TextFormField(
                               decoration: textInputDecoration.copyWith(
-                                  hintText: 'Email'),
+                                  labelText: 'Email', hintText: 'example@gmail.com',hintStyle: TextStyle(color: Colors.grey[450])),
                               validator: (val) =>
                                   val.isEmpty ? 'Please enter an email' : null,
                               onChanged: (val) {
@@ -70,14 +69,28 @@ class _RegisterState extends State<Register> {
                             height: 20.0,
                           ),
                           TextFormField(
+                              
                               decoration: textInputDecoration.copyWith(
-                                  hintText: 'Password'),
+                                  labelText: 'Password'),
                               validator: (val) => val.length < 8
                                   ? 'Please enter 8 characters or more'
                                   : null,
                               obscureText: true,
                               onChanged: (val) {
                                 setState(() => password = val);
+                              }),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          TextFormField(
+                              decoration: textInputDecoration.copyWith(
+                                  labelText: 'Confirm Password'),
+                              validator: (val) => val != password
+                                  ? 'Password do not match'
+                                  : null,
+                              obscureText: true,
+                              onChanged: (val) {
+                                setState(() => confirmPassword = val);
                               })
                         ],
                       )),
@@ -106,7 +119,7 @@ class _RegisterState extends State<Register> {
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
                           dynamic result = await _auth
-                              .registerWithEmailAndPassword(email, password);
+                              .registerWithEmailAndPassword(email, confirmPassword);
                           if (result == null) {
                             setState(() {
                               error = 'Please enter a valid email';
