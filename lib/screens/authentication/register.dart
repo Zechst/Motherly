@@ -16,6 +16,13 @@ class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
+  bool _isHidden = true;
+
+  void _toggleVisibility() {
+    setState(() {
+      _isHidden = !_isHidden;
+    });
+  }
 
   // text field state
   String email = '';
@@ -51,15 +58,19 @@ class _RegisterState extends State<Register> {
                           fontFamily: 'FredokaOne',
                           fontSize: 20.0,
                           color: Color(0xFFFA9A9A))),
+                  //Text('™'),
                   Form(
                       key: _formKey,
                       child: Column(
                         children: <Widget>[
-                           //TODO Shift this line towards the left on appscreen
+                          //TODO Shift this line towards the left on appscreen
                           SizedBox(height: 20.0),
                           TextFormField(
                               decoration: textInputDecoration.copyWith(
-                                  labelText: 'Email', hintText: 'example@gmail.com',hintStyle: TextStyle(color: Colors.grey[450])),
+                                  labelText: 'Email',
+                                  hintText: 'example@gmail.com',
+                                  hintStyle:
+                                      TextStyle(color: Colors.grey[450])),
                               validator: (val) =>
                                   val.isEmpty ? 'Please enter an email' : null,
                               onChanged: (val) {
@@ -69,13 +80,17 @@ class _RegisterState extends State<Register> {
                             height: 20.0,
                           ),
                           TextFormField(
-                              
                               decoration: textInputDecoration.copyWith(
-                                  labelText: 'Password'),
+                                  labelText: 'Password',
+                                  suffixIcon: IconButton(
+                                      onPressed: _toggleVisibility,
+                                      icon: _isHidden
+                                          ? Icon(Icons.visibility_off)
+                                          : Icon(Icons.visibility))),
                               validator: (val) => val.length < 8
                                   ? 'Please enter 8 characters or more'
                                   : null,
-                              obscureText: true,
+                              obscureText: _isHidden ? true : false,
                               onChanged: (val) {
                                 setState(() => password = val);
                               }),
@@ -84,11 +99,16 @@ class _RegisterState extends State<Register> {
                           ),
                           TextFormField(
                               decoration: textInputDecoration.copyWith(
-                                  labelText: 'Confirm Password'),
+                                  labelText: 'Confirm Password',
+                                  suffixIcon: IconButton(
+                                      onPressed: _toggleVisibility,
+                                      icon: _isHidden
+                                          ? Icon(Icons.visibility_off)
+                                          : Icon(Icons.visibility))),
                               validator: (val) => val != password
                                   ? 'Password do not match'
                                   : null,
-                              obscureText: true,
+                              obscureText: _isHidden ? true : false,
                               onChanged: (val) {
                                 setState(() => confirmPassword = val);
                               })
@@ -118,15 +138,17 @@ class _RegisterState extends State<Register> {
                           borderRadius: new BorderRadius.circular(10.0)),
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
-                          dynamic result = await _auth
-                              .registerWithEmailAndPassword(email, confirmPassword);
+                          dynamic result =
+                              await _auth.registerWithEmailAndPassword(
+                                  email, confirmPassword);
                           if (result == null) {
                             setState(() {
                               error = 'Please enter a valid email';
                               loading = false;
                             });
                           } else if (result != null) {
-                            Navigator.pushNamedAndRemoveUntil(context, '/home',(_) => false);
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/home', (_) => false);
                           }
                         }
                       },
