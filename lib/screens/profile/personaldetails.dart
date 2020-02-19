@@ -70,6 +70,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                                 }),
                             SizedBox(height: 30.0),
                             TextFormField(
+                              // TODO Only allow numbers with a fix 8 digit number that begins with 8 or 9
                               decoration: textInputDecoration.copyWith(
                                   labelText: "Mobile Number",
                                   hintText: '+65',
@@ -109,7 +110,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                                     Navigator.pushNamed(
                                         context, '/childselect');
                                   }),
-                            ), // Only numbers can be entered
+                            ),
                           ],
                         ))
                   ],

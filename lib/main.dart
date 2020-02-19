@@ -22,18 +22,18 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
         //Theme
         theme: myTheme,
-        // home: PersonalDetails()
+        home: ChildSelect()
 
         //Routes
-        routes: {
-         '/': (context) => Wrapper(),
-         '/login': (context) => LoginScreen(),
-         '/emailSignIn': (context) => EmailSignIn() ,
-         '/register': (context) => Register(),
-         '/home': (context) => Home(),
-         '/personaldetails': (context) => PersonalDetails(),
-         '/childselect': (context) => ChildSelect()
-        },
+        // routes: {
+        //  '/': (context) => Wrapper(),
+        //  '/login': (context) => LoginScreen(),
+        //  '/emailSignIn': (context) => EmailSignIn() ,
+        //  '/register': (context) => Register(),
+        //  '/home': (context) => Home(),
+        //  '/personaldetails': (context) => PersonalDetails(),
+        //  '/childselect': (context) => ChildSelect()
+        // },
         
 
       ),
