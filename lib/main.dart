@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 import 'package:motherly/services/auth.dart';
 import 'package:motherly/models/user.dart';
 import 'package:motherly/screens/authentication/register.dart';
+import 'package:motherly/screens/profile/personaldetails.dart';
+import 'package:motherly/screens/profile/childselect.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,6 +22,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
         //Theme
         theme: myTheme,
+        // home: PersonalDetails()
 
         //Routes
         routes: {
@@ -27,7 +30,9 @@ class MyApp extends StatelessWidget {
          '/login': (context) => LoginScreen(),
          '/emailSignIn': (context) => EmailSignIn() ,
          '/register': (context) => Register(),
-         '/home': (context) => Home()
+         '/home': (context) => Home(),
+         '/personaldetails': (context) => PersonalDetails(),
+         '/childselect': (context) => ChildSelect()
         },
         
 

@@ -148,7 +148,7 @@ class _RegisterState extends State<Register> {
                             });
                           } else if (result != null) {
                             Navigator.pushNamedAndRemoveUntil(
-                                context, '/home', (_) => false);
+                                context, '/personaldetails', (_) => false);
                           }
                         }
                       },
