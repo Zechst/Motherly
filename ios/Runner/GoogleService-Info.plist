@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>748933198875-b1651vae4kcccqo4624vbihd5heu0spl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.748933198875-b1651vae4kcccqo4624vbihd5heu0spl</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>748933198875-mtkha08855rh2t209626ep4qvc757qle.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA2jKzukQrYbhxsd4WqCE2XRJKLhAy5mb8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>748933198875</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>io.babyspa.motherly</string>
+	<key>PROJECT_ID</key>
+	<string>motherly-c5077</string>
+	<key>STORAGE_BUCKET</key>
+	<string>motherly-c5077.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:748933198875:ios:77a9557b6edb806b8ef4be</string>
+	<key>DATABASE_URL</key>
+	<string>https://motherly-c5077.firebaseio.com</string>
+</dict>
+</plist>
